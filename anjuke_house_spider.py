@@ -44,10 +44,10 @@ class AnjukeHouseSpider(object):
                     area_url = item.get('href')[0:-2]
                     area = item.get_text()
                     # 不抓取周边城市
-                    if '周边' in area:
+                    if '南湖'  not in area:
                         continue
                     for o in SEACHER_SORT:
-                        for p in range(1, 51, 1):
+                        for p in range(1, 20, 1):
                             url = '%s%s-p%s/#filtersort' % (area_url, o, p)
                             rsp = requests.get(url, headers=HEADERS).content.decode('utf8')
                             if '验证码必须填写' in rsp:
